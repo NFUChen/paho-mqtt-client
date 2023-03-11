@@ -145,6 +145,14 @@ class Client:
         self.mqtt_client.loop_start()
 
     def set_on_message_callback(self, on_message_callback: OnMessageCallable) -> None:
+        '''
+        on_message function signature:
+            def on_message(client, userdata, message):
+                print(f"message received: {str(message.payload.decode('utf-8'))}")
+                print(f"message topic: {message.topic}")
+
+        '''
+
         self.mqtt_client.on_message = on_message_callback
 
     def __repr__(self) -> str:
